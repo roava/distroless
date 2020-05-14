@@ -33,10 +33,10 @@ steps:
     set -o errexit
     set -o xtrace
 
-    docker tag bazel/experimental/nodejs:nodejs gcr.io/$PROJECT_ID/nodejs:latest
-    docker tag bazel/experimental/nodejs:debug  gcr.io/$PROJECT_ID/nodejs:debug
+    docker tag bazel/experimental/nodejs:nodejs gcr.io/$REPO_NAME/nodejs:latest
+    docker tag bazel/experimental/nodejs:debug  gcr.io/$REPO_NAME/nodejs:debug
 
 images:
-  - 'gcr.io/$PROJECT_ID/nodejs:latest'
-  - 'gcr.io/$PROJECT_ID/nodejs:debug'
+  - 'gcr.io/$REPO_NAME/nodejs:latest'
+  - 'gcr.io/$REPO_NAME/nodejs:debug'
 
