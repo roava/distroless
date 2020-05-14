@@ -44,5 +44,4 @@ jobs:
     - name: Build
       run: |-
         gcloud builds submit \
-          --gcs-log-dir="gs://${PROJECT_ID}_cloudbuild/logs" \
-          --substitutions "PROJECT_ID=$PROJECT_ID"
+          --gcs-log-dir="gs://${PROJECT_ID}_cloudbuild/logs"
