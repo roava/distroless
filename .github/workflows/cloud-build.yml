@@ -43,11 +43,6 @@ jobs:
     # Build and push image to Google Container Registry
     - name: Build
       run: |-
-        #!/bin/sh
-        set -o errexit
-        set -o xtrace
-
-        bazel clean --host_force_python=PY2 --curses=no
-        bazel build --host_force_python=PY2 --curses=no //package_manager:dpkg_parser.par
-        bazel run --host_force_python=PY2 //experimental/nodejs
-        bazel run --host_force_python=PY2 //experimental/nodejs:debug
+        gcloud builds submit \
+          --gcs-log-dir="gs://${PROJECT_ID}_cloudbuild/logs" \
+          --substitutions "PROJECT_ID=$PROJECT_ID"
