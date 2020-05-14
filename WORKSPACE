@@ -45,6 +45,14 @@ dpkg_src(
     sha256 = "221c453ba67ed5eaea7ee896b183ab228c5a49ceab087ae007829e038d7ad531",
 )
 
+dpkg_src(
+    name = "pulsar",
+    package_prefix = "https://downloads.apache.org/pulsar/pulsar-2.5.1/DEB/",
+    packages_gz_url = "https://downloads.apache.org/pulsar/pulsar-2.5.1/DEB/Packages.gz",
+    sha256 = "c2d70950b8cced7a9e306a4546b71c272d07ebfdab3dd27fa0cfa23e3b672aa8"
+)
+
+
 dpkg_list(
     name = "package_bundle",
     packages = [
@@ -146,6 +154,10 @@ dpkg_list(
         "libpcre3",
         "libbz2-1.0",
         "liblzma5",
+
+		# pulsar client
+		"apache-pulsar-client=2.5.1",
+		"apache-pulsar-client-dev=2.5.1",
     ],
     # Takes the first package found: security updates should go first
     # If there was a security fix to a package before the stable release, this will find
@@ -154,6 +166,7 @@ dpkg_list(
         "@debian_stretch_security//file:Packages.json",
         "@debian_stretch_backports//file:Packages.json",
         "@debian_stretch//file:Packages.json",
+        "@pulsar//file:Packages.json",
     ],
 )
 
@@ -364,6 +377,10 @@ dpkg_list(
         "libpcre3",
         "libbz2-1.0",
         "liblzma5",
+
+		# pulsar client
+		"apache-pulsar-client=2.5.1",
+		"apache-pulsar-client-dev=2.5.1",
     ],
     # Takes the first package found: security updates should go first
     # If there was a security fix to a package before the stable release, this will find
@@ -371,6 +388,7 @@ dpkg_list(
     sources = [
         "@debian10_security//file:Packages.json",
         "@debian10//file:Packages.json",
+        "@pulsar//file:Packages.json",
     ],
 )
 
