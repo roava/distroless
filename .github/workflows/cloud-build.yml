@@ -21,7 +21,6 @@ on:
 
 env:
   PROJECT_ID: ${{ secrets.RUN_PROJECT }}
-  REPO_NAME: roava
   IMAGE_TAG: 1.0.0
 
 jobs:

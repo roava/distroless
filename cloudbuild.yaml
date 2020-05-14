@@ -10,6 +10,8 @@ steps:
     #!/bin/sh
     set -o errexit
     set -o xtrace
+
+    bazel clean --host_force_python=PY2 --curses=no
     bazel build --host_force_python=PY2 //package_manager:dpkg_parser.par
 
 - name: gcr.io/cloud-builders/bazel
@@ -33,10 +35,10 @@ steps:
     set -o errexit
     set -o xtrace
 
-    docker tag bazel/experimental/nodejs:nodejs gcr.io/$REPO_NAME/nodejs:latest
-    docker tag bazel/experimental/nodejs:debug  gcr.io/$REPO_NAME/nodejs:debug
+    docker tag bazel/experimental/nodejs:nodejs gcr.io/roava/nodejs:latest
+    docker tag bazel/experimental/nodejs:debug  gcr.io/roava/nodejs:debug
 
 images:
-  - 'gcr.io/$REPO_NAME/nodejs:latest'
-  - 'gcr.io/$REPO_NAME/nodejs:debug'
+  - 'gcr.io/roava/nodejs:latest'
+  - 'gcr.io/roava/nodejs:debug'
 
